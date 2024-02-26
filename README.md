@@ -1,1 +1,1 @@
-odinProject local library project
+odinProject local-library project
