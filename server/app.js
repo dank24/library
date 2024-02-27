@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const userRoute = require('./routes/userRoute')
 const mongoose = require('mongoose')
@@ -14,8 +15,7 @@ app.use('/', userRoute)
 
 
 //dataBase Server
-const mongoUrl = 
-    'mongodb+srv://dansdana1999:07061071398a@cluster0.v1epfui.mongodb.net/local-library?retryWrites=true&w=majority&appName=Cluster0'
+const mongoUrl = process.env.mongoUrl
 function dbConnect() {
     mongoose.connect(mongoUrl).then(() =>{
         console.log('DB Connected')
