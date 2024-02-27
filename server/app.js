@@ -1,41 +1,33 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express')
+const userRoute = require('./routes/userRoute')
+const mongoose = require('mongoose')
+const path = require('path')
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const app = express()
 
-var app = express();
+app.set('view', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.use('/', userRoute)
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+//dataBase Server
+const mongoUrl = 
+    'mongodb+srv://dansdana1999:07061071398a@cluster0.v1epfui.mongodb.net/local-library?retryWrites=true&w=majority&appName=Cluster0'
+function dbConnect() {
+    mongoose.connect(mongoUrl).then(() =>{
+        console.log('DB Connected')
+    }).catch(error =>{
+        console.log(error)
+    })
+}
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+//server start 
+const port = 3012
+app.listen(port, () =>{
+    console.log(`Server Started On Port: ${port}`)
+})
 
-module.exports = app;
+dbConnect()
