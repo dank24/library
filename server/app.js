@@ -1,15 +1,24 @@
 require('dotenv').config()
 const express = require('express')
-const userRoute = require('./routes/userRoute')
 const mongoose = require('mongoose')
 const path = require('path')
+
+const bookRoute = require('./routes/userRoute')
+const authorRoute = require('./routes/authorRoute')
+const bookInstRoute = require('./routes/bookInstRoute')
+const genreRoute = require('./routes/genreRoute')
+const indexRoute = require('./routes/index')
 
 const app = express()
 
 app.set('view', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-app.use('/', userRoute)
+app.use('/', indexRoute)
+app.use('/', bookRoute)
+app.use('/', authorRoute)
+app.use('/', bookInstRoute)
+app.use('/', genreRoute)
 
 
 

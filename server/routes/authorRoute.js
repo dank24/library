@@ -30,7 +30,7 @@ router.post('/Authors', authorCont.authorsPost)
 
 router.get('/Author/delete', authorCont.deleteAuthorPost)
 
-router.get('Author/:id/update', authorCont.updateAuthorPost)
+router.get('Author/:id/update', authorCont.updateAutphorPost)
 
 
 
