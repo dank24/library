@@ -1,11 +1,17 @@
-const userModel = require('../models/authorModels')
+const bookModel = require('../models/bookModel')
+
 const asyncHandler = require('express-async-handler')
 
 
 //get request
 exports.index = asyncHandler(
+
     (req,res,next) =>{
-        res.send('this is the index')
+      let books = async () =>{
+        await bookModel.countDocuments().exec()
+      }  
+
+        res.render('index', {books})
     }
 )
 
@@ -15,21 +21,9 @@ exports.bookCreateGet = asyncHandler(
     }
 )
 
-exports.authorCreateGet = asyncHandler(
-    (req,res,next) =>{
-        res.send('create an author')
-    }
-)
-
 exports.bookGet = asyncHandler(
     (req,res,next) =>{
         res.send('get a single books')
-    }
-)
-
-exports.authorGet = asyncHandler(
-    (req,res,next) =>{
-        res.send('get a single author')
     }
 )
 
@@ -39,11 +33,19 @@ exports.booksGet = asyncHandler(
     }
 )
 
-exports.authorsGet = asyncHandler(
+exports.deleteBookGet = asyncHandler(
     (req,res,next) =>{
-        res.send('get all authors')
+        res.send('not get implemented delete a book get')
     }
 )
+
+exports.bookUpdateGet = asyncHandler(
+    (req,res,next) =>{
+        res.send('not yet implemented update a book get')
+    }
+)
+
+
 
 // Post requests
 exports.index = asyncHandler(
@@ -58,11 +60,7 @@ exports.bookCreatePost = asyncHandler(
     }
 )
 
-exports.authorCreatePost = asyncHandler(
-    (req,res,next) =>{
-        
-    }
-)
+
 
 exports.bookPost = asyncHandler(
     (req,res,next) =>{
@@ -70,11 +68,6 @@ exports.bookPost = asyncHandler(
     }
 )
 
-exports.authorPost = asyncHandler(
-    (req,res,next) =>{
-    
-    }
-)
 
 exports.booksPost = asyncHandler(
     (req,res,next) =>{
@@ -82,8 +75,14 @@ exports.booksPost = asyncHandler(
     }
 )
 
-exports.authorsPost = asyncHandler(
-    (req,res,next) =>{Post
+exports.deleteBookPost = asyncHandler(
+    (req,res,next) =>{
+        res.send('not get implemented delete a book post')
+    }
+)
 
+exports.updateBookPost = asyncHandler(
+    (req,res,next) =>{
+        res.send('not yet implemented update a book post')
     }
 )
