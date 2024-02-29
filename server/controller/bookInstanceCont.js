@@ -5,7 +5,7 @@ const bookInstanceModel = require('../models/bookInstanceModel')
 
 //bookInstance requests
 
-exports.createbookInstanceGet = asyncHandler(
+exports.createBookInstanceGet = asyncHandler(
     (req,res,next) =>{
         res.send('not get implemented bookInstanceCreate')
     }
@@ -23,12 +23,6 @@ exports.bookInstancesGet = asyncHandler(
     }
 )
 
-exports.createbookInstanceGet = asyncHandler(
-    (req,res,next) =>{
-        res.send('not get implemented bookInstanceCreate')
-    }
-)
-
 exports.deletebookInstanceGet = asyncHandler(
     (req,res,next) =>{
         res.send('not get implemented delete a gemre get')
@@ -41,8 +35,10 @@ exports.updatebookInstanceGet = asyncHandler(
     }
 )
 
+
+
 //post bookInstance
-exports.createbookInstancePost = asyncHandler(
+exports.createBookInstancePost = asyncHandler(
     (req,res,next) =>{
         res.send(`not get implemented create a bookInstance ${req.params.id}`)
     }
@@ -66,7 +62,7 @@ exports.deletebookInstancePost = asyncHandler(
     }
 )
 
-exports.updatebookInstancePost = asyncHandler(
+exports.updateBookInstancePost = asyncHandler(
     (req,res,next) =>{
         res.send('not yet implemented update a bookInstance post')
     }
