@@ -29,7 +29,7 @@ exports.deletebookInstanceGet = asyncHandler(
     }
 )
 
-exports.updatebookInstanceGet = asyncHandler(
+exports.updateBookInstanceGet = asyncHandler(
     (req,res,next) =>{
         res.send('not yet implemented update a bookInstance get')
     }

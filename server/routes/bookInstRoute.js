@@ -1,6 +1,6 @@
 const express = require('express')
 
-const router = express.Router
+const router = express.Router()
 
 const bookInstanceCont = require('../controller/bookInstanceCont')
 
@@ -14,7 +14,7 @@ router.get('/bookInstances', bookInstanceCont.bookInstancesGet)
 
 router.get('/bookInstance/delete', bookInstanceCont.deletebookInstanceGet)
 
-router.get('bookInstance/:id/update', bookInstanceCont.updatebookInstancePost)
+router.get('bookInstance/:id/update', bookInstanceCont.updateBookInstanceGet)
 
 //Router.post requests
 

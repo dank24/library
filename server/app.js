@@ -3,7 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const path = require('path')
 
-const bookRoute = require('./routes/userRoute')
+const bookRoute = require('./routes/bookRoute')
 const authorRoute = require('./routes/authorRoute')
 const bookInstRoute = require('./routes/bookInstRoute')
 const genreRoute = require('./routes/genreRoute')
