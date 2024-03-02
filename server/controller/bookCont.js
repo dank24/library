@@ -1,17 +1,36 @@
 const bookModel = require('../models/bookModel')
+const authorModel = require('../models/authorModel')
+const genreModel = require('../models/genreModel')
+const bookInstanceModel = require('../models/bookInstanceModel')
 
 const asyncHandler = require('express-async-handler')
 
 
 //get request
 exports.index = asyncHandler(
+   async (req,res,next) =>{
+      let [
+        bookNum,
+        bookInstanceNum,
+        numAvailableInstances,
+        authorNums,
+        genreNums,
+      ] = await Promise.all([
+        bookModel.countDocuments({}).exec,
+        bookInstanceModel.countDocuments({}).exec(),
+        bookInstanceModel.countDocuments({bookStatus: 'Available'}).exec(),
+        authorModel.countDocuments({}).exec(),
+        genreModel.countDocuments({}).exec()
+      ])
+      res.render('index', {
+        title: 'Local Library',
+        bookCount: bookNum,
+        bookInstanceCount: bookInstanceNum,
+        availableBookInstance: numAvailableInstances,
+        authorCount: authorNums,
+        genreCount: genreNums,
+      })
 
-    (req,res,next) =>{
-      let books = async () =>{
-        await bookModel.countDocuments().exec()
-      }  
-
-        res.render('index', {books})
     }
 )
 
