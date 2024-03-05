@@ -7,32 +7,6 @@ const asyncHandler = require('express-async-handler')
 
 
 //get request
-exports.index = asyncHandler(
-   async (req,res,next) =>{
-      let [
-        bookNum,
-        bookInstanceNum,
-        numAvailableInstances,
-        authorNums,
-        genreNums,
-      ] = await Promise.all([
-        bookModel.countDocuments({}).exec,
-        bookInstanceModel.countDocuments({}).exec(),
-        bookInstanceModel.countDocuments({bookStatus: 'Available'}).exec(),
-        authorModel.countDocuments({}).exec(),
-        genreModel.countDocuments({}).exec()
-      ])
-      res.render('index', {
-        title: 'Local Library',
-        bookCount: bookNum,
-        bookInstanceCount: bookInstanceNum,
-        availableBookInstance: numAvailableInstances,
-        authorCount: authorNums,
-        genreCount: genreNums,
-      })
-
-    }
-)
 
 exports.bookCreateGet = asyncHandler(
     (req,res,next) =>{
@@ -67,11 +41,7 @@ exports.bookUpdateGet = asyncHandler(
 
 
 // Post requests
-exports.index = asyncHandler(
-    (req,res,next) =>{
-        res.send('this is the index')
-    }
-)
+
 
 exports.bookCreatePost = asyncHandler(
     (req,res,next) =>{

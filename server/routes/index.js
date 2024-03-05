@@ -2,10 +2,12 @@ const express = require('express')
 
 const router = express.Router()
 
-const bookCont = require('../controller/bookCont')
+const indexHome = require('../controller/indexHomeCont')
 
 
-router.get('/', bookCont.index)
+router.get('/', indexHome.index)
+
+router.get('/home', indexHome.homeGet)
 
 
 module.exports = router
