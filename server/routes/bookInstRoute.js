@@ -6,27 +6,27 @@ const bookInstanceCont = require('../controller/bookInstanceCont')
 
 // Router.get functions
 
-router.get('/createbookInstance', bookInstanceCont.createBookInstanceGet)
+router.get('/catalog/bookinstance/create', bookInstanceCont.createBookInstanceGet)
 
-router.get('/bookInstance/:id', bookInstanceCont.bookInstanceGet)
+router.get('/catalog/bookinstances', bookInstanceCont.bookInstancesGet)
 
-router.get('/bookInstances', bookInstanceCont.bookInstancesGet)
+router.get('/catalog/bookinstance/:id', bookInstanceCont.bookInstanceGet)
 
-router.get('/bookInstance/delete', bookInstanceCont.deletebookInstanceGet)
+router.get('/catalog/bookinstance/:id/delete', bookInstanceCont.deletebookInstanceGet)
 
-router.get('bookInstance/:id/update', bookInstanceCont.updateBookInstanceGet)
+router.get('/catalog/bookinstance/:id/update', bookInstanceCont.updateBookInstanceGet)
 
 //Router.post requests
 
-router.post('/createbookInstance', bookInstanceCont.createBookInstancePost)
+router.post('/catalog/bookinstance/create', bookInstanceCont.createBookInstancePost)
 
-router.post('/bookInstance/:id', bookInstanceCont.bookInstancePost)
+router.post('/catalog/bookinstance/:id', bookInstanceCont.bookInstancePost)
 
-router.post('/bookInstances', bookInstanceCont.bookInstancesPost)
+router.post('/catalog/bookinstances', bookInstanceCont.bookInstancesPost)
 
 router.get('/bookInstance/:id/delete', bookInstanceCont.deletebookInstancePost)
 
-router.get('bookInstance/:id/update', bookInstanceCont.updateBookInstancePost)
+router.get('/catalog/bookinstance/:id/update', bookInstanceCont.updateBookInstancePost)
 
 
 

@@ -6,27 +6,27 @@ const router = express.Router()
 
 // Router.get functions
 
-router.get('/createbook', bookCont.bookCreateGet)
+router.get('/catalog/book/create', bookCont.bookCreateGet)
 
-router.get('/book/:id', bookCont.bookGet)
+router.get('catalog/book/:id', bookCont.bookGet)
 
-router.get('/books', bookCont.booksGet)
+router.get('/catalog/books', bookCont.booksGet)
 
-router.get('/book/delete', bookCont.deleteBookGet)
+router.get('/catalog/book/:id/delete', bookCont.deleteBookGet)
 
-router.get('book/:id/update', bookCont.updateBookPost)
+router.get('/catalog/book/:id/update', bookCont.updateBookPost)
 
 //Router.post requests
 
-router.post('/createbook', bookCont.bookCreatePost)
+router.post('/catalog/book/create', bookCont.bookCreatePost)
 
-router.post('/book/:id', bookCont.bookPost)
+router.post('catalog/book/:id', bookCont.bookPost)
 
-router.post('/books', bookCont.booksPost)
+router.post('/catalog/books', bookCont.booksPost)
 
-router.get('/book/delete', bookCont.deleteBookPost)
+router.get('/catalog/book/:id/delete', bookCont.deleteBookPost)
 
-router.get('book/:id/update', bookCont.updateBookPost)
+router.get('/catalog/book/:id/update', bookCont.updateBookPost)
 
 
 

@@ -7,7 +7,7 @@ const indexHome = require('../controller/indexHomeCont')
 
 router.get('/', indexHome.index)
 
-router.get('/home', indexHome.homeGet)
+router.get('/catalog', indexHome.homeGet)
 
 
 module.exports = router

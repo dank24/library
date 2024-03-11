@@ -4,23 +4,28 @@ const mongoose = require('mongoose')
 const path = require('path')
 const expressLayouts = require('express-ejs-layouts')
 
+const app = express()
+
 const bookRoute = require('./routes/bookRoute')
 const authorRoute = require('./routes/authorRoute')
 const bookInstRoute = require('./routes/bookInstRoute')
 const genreRoute = require('./routes/genreRoute')
 const indexRoute = require('./routes/index')
 
-const app = express()
+
+
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-app.use('public', express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRoute)
 app.use('/', bookRoute)
 app.use('/', authorRoute)
 app.use('/', bookInstRoute)
 app.use('/', genreRoute)
+
+
 
 
 

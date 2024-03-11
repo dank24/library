@@ -7,28 +7,28 @@ const authorCont = require('../controller/authorCont')
 // Router get functions
 
 
-router.get('/createauthor', authorCont.createAuthorGet)
+router.get('/catalog/author/create', authorCont.createAuthorGet)
 
 router.get('/Author/:id', authorCont.authorGet)
 
-router.get('/Authors', authorCont.authorsGet)
+router.get('/catalog/authors', authorCont.authorsGet)
 
-router.get('/Author/:id/delete', authorCont.deleteAuthorGet)
+router.get('/catalog/author/:id/delete', authorCont.deleteAuthorGet)
 
-router.get('Author/:id/update', authorCont.updateAuthorPost)
+router.get('catalog/author/:id/update', authorCont.updateAuthorPost)
 
 //Router.post requests
 
 
-router.post('/createauthor', authorCont.createAuthorPost)
+router.post('/catalog/author/create', authorCont.createAuthorPost)
 
 router.post('/Author/:id', authorCont.authorPost)
 
-router.post('/Authors', authorCont.authorsPost)
+router.post('/catalog/authors', authorCont.authorsPost)
 
-router.post('/Author/delete', authorCont.deleteAuthorPost)
+router.post('/catalog/author/:id/delete', authorCont.deleteAuthorPost)
 
-router.post('Author/:id/update', authorCont.updateAuthorPost)
+router.post('catalog/author/:id/update', authorCont.updateAuthorPost)
 
 
 
