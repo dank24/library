@@ -1,0 +1,38 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+}
+.mainCont{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+}
+.firstDiv{
+    
+    display: flex;
+    gap: 5%;
+    width: 25%;
+    height: 100%;
+    background-color: wheat;
+}
+.secondDiv{
+    
+    width: 75%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+form{
+    height: 40%;
+
+}
+form > fieldset{
+    display: flex;
+    flex-direction: column;
+    height:100% ;
+}

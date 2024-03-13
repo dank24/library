@@ -10,7 +10,7 @@ const asyncHandler = require('express-async-handler')
 
 exports.bookCreateGet = asyncHandler(
     (req,res,next) =>{
-        res.send('createa a book')
+        res.render('pages/bookCreate')
     }
 )
 
@@ -44,8 +44,31 @@ exports.bookUpdateGet = asyncHandler(
 
 
 exports.bookCreatePost = asyncHandler(
-    (req,res,next) =>{
+    async (req,res,next) =>{
+
+        const {bName, bAuthor, bIsbn, bSummary, bPubDate } = req.body
+            let lBNAme = bName.toLowerCase()
+           
+        let book = await bookModel.findOne({bName}) 
         
+        if(!book) {
+            let newBook = new bookModel({
+                bookName: bName,
+                bookAuthor: bAuthor,
+                bookISBN: bIsbn,
+                bookSummary: bSummary,
+                bookPubDate: bPubDate
+            })
+            res.status(200).json(`New Book Added To The Library :${lBNAme}`)
+
+            await newBook.save()
+        }
+
+        if(book) {
+            res.status(400).json('this book is already in the database')
+        }  
+
+
     }
 )
 

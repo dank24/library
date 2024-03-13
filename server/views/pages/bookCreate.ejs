@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/stylesheets/createPages.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add A Book</title>
@@ -12,15 +13,23 @@
         </div>
 
         <div class="secondDiv">
-            <form action="" method="post">
+            <form action="http://localhost:3012/catalog/book/create" method="post">
+                <h1>Add a Book</h1>
                 <fieldset>
                     <input type="text" id="bName" placeholder="Name" name="bName">
-                    <input type="text" id="a=bAuthor" placeholder="Author" name="bAuthor">
+                    <input type="text" id="bAuthor" placeholder="Author" name="bAuthor">
                     <input type="text" id="bIsbn" placeholder="ISBN" name="bIsbn">
                     <input type="text" id="bPubDate" placeholder="Publication Date" name="bPubDate">
                     <input type="text" id="bSummary" placeholder="Summary" name="bSummary">
+                    <button >Create Book</button>
+                    
+                        <select>
+                            <option>here</option>
+                            <option value="Science Fiction">Sci-Fi</option>
+                        </select>
+                    
                 </fieldset>
-                    <button type="submit">Create Book</button>
+                   
             </form>
         </div>
     </div>    
