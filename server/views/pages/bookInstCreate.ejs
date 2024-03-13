@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add A Book</title>
+</head>
+<body>
+    <div class="mainCont">
+        <div class="firstDiv">
+            <%- include('../layout') %>
+        </div>
+
+        <div class="secondDiv">
+            <form action="" method="post">
+                <fieldset>
+                    <input type="text" id="bName" placeholder="Book Name" name="bName">
+                    <input type="text" id="bStatus" placeholder="Book Status" name="bStatus">
+                    <input type="text" id="bDueBack" placeholder="Book Due Back" name="bDueBack">
+                </fieldset>
+                    <button type="submit">Create Book</button>
+            </form>
+        </div>
+    </div>    
+</body>
+</html>

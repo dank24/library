@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add A Book</title>
+</head>
+<body>
+    <div class="mainCont">
+        <div class="firstDiv">
+            <%- include('../layout') %>
+        </div>
+
+        <div class="secondDiv">
+            <form action="" method="post">
+                <fieldset>
+                    <input type="text" id="bName" placeholder="Name" name="bName">
+                    <input type="text" id="a=bAuthor" placeholder="Author" name="bAuthor">
+                    <input type="text" id="bIsbn" placeholder="ISBN" name="bIsbn">
+                    <input type="text" id="bPubDate" placeholder="Publication Date" name="bPubDate">
+                    <input type="text" id="bSummary" placeholder="Summary" name="bSummary">
+                </fieldset>
+                    <button type="submit">Create Book</button>
+            </form>
+        </div>
+    </div>    
+</body>
+</html>
