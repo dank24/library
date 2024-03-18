@@ -7,7 +7,7 @@ const authorModel = require('../models/authorModel')
 
 exports.createAuthorGet = asyncHandler(
     (req,res,next) =>{
-        res.send('not get implemented AuthorCreate')
+        res.render('pages/authorCreate')
     }
 )
 
@@ -23,11 +23,6 @@ exports.authorsGet = asyncHandler(
     }
 )
 
-exports.createAuthorGet = asyncHandler(
-    (req,res,next) =>{
-        res.send('not get implemented AuthorCreate')
-    }
-)
 
 exports.deleteAuthorGet = asyncHandler(
     (req,res,next) =>{
@@ -41,10 +36,34 @@ exports.updateAuthorGet = asyncHandler(
     }
 )
 
+
+
 //post Author
 exports.createAuthorPost = asyncHandler(
-    (req,res,next) =>{
-        res.send(`not get implemented create a Author ${req.params.id}`)
+   async (req,res,next) =>{
+        const {aFName, aLName, aDob, aRating} = req.body
+        let fName = aFName.toLowerCase()
+        let lName = aLName.toLowerCase()
+        let dob = aDob.toLowerCase()
+        let rating = aRating.toLowerCase()
+
+        let author = await authorModel.findOne({authorLastName: lName})
+        
+        if(author){
+            res.status(400).json('This author is already in the database')
+        }
+
+        if(!author){
+            let newAuthor = new authorModel({
+                authorFirstName: fName,
+                authorLastName: lName,
+                authorDOB: dob,
+                authorRating: rating
+            })
+
+            await newAuthor.save()
+            res.status(200).json(`New author: ${author} added`)
+        }
     }
 )
 

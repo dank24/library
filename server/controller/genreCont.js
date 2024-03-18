@@ -7,7 +7,7 @@ const genreModel = require('../models/genreModel')
 
 exports.createGenreGet = asyncHandler(
     (req,res,next) =>{
-        res.send('not get implemented genreCreate')
+        res.render('pages/genreCreate')
     }
 )
 
@@ -23,11 +23,6 @@ exports.genresGet = asyncHandler(
     }
 )
 
-exports.createGenreGet = asyncHandler(
-    (req,res,next) =>{
-        res.send('not get implemented genreCreate')
-    }
-)
 
 exports.deleteGenreGet = asyncHandler(
     (req,res,next) =>{
@@ -43,8 +38,27 @@ exports.updateGenreGet = asyncHandler(
 
 //post genre
 exports.createGenrePost = asyncHandler(
-    (req,res,next) =>{
-        res.send(`not get implemented create a genre ${req.params.id}`)
+    async (req,res,next) =>{
+
+        const {gName, gDescrition} = req.body
+        let name = gName.toLowerCase()
+        let descrition = gDescrition.toLowerCase()
+
+        let genre = await genreModel.findOne({genreName: name})
+
+        if(genre){
+            res.status(400).json('This genre is known')
+        }
+        if(!genre){
+            let newGenre = new genreModel({
+                genreName: name,
+                genreDescription: descrition
+            })
+
+            await newGenre.save()
+            res.status(200).json(`Genre :${name} as been added to the library`)
+        }
+
     }
 )
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/stylesheets/createPages.css">
+    <link rel="stylesheet" href="/stylesheets/catalog.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add An Author</title>
+</head>
+<body>
+    <div class="mainCont">
+        <div class="firstDiv">
+            <%- include('../layout') %>
+        </div>
+
+        <div class="secondDiv">
+            <form action="localhost:3012/catalog/author/create" method="post">
+                <fieldset>
+                    <input placeholder="First Name" type="text" name="fName" id="aFName">
+                    <input placeholder="Last Name" type="text" name="lName" id="aLName">
+
+                    <input placeholder="Date Of Birth" type="text" name="dob" id="aDob">
+                    <input placeholder="Rating" type="number" min="1" max="5" name="rating" id="aRating">
+                    <button type="submit" class="createBtn">Create Author</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

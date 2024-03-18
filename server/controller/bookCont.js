@@ -21,8 +21,16 @@ exports.bookGet = asyncHandler(
 )
 
 exports.booksGet = asyncHandler(
-    (req,res,next) =>{
-        res.send('get all books')
+    async (req,res,next) =>{
+        const allBooks = await bookModel.find({}, "bookName bookAuthor")
+        .sort({bookName: 1})
+        .populate("bookAuthor")
+        .exec();
+ 
+        res.render('pages/list/bookList', {
+         title: "Book List",
+         bookList: allBooks
+        })
     }
 )
 
@@ -47,27 +55,31 @@ exports.bookCreatePost = asyncHandler(
     async (req,res,next) =>{
 
         const {bName, bAuthor, bIsbn, bSummary, bPubDate } = req.body
-            let lBNAme = bName.toLowerCase()
+            let name = bName.toLowerCase()
+            let author= bAuthor.toLowerCase()
+            let isbn = bIsbn.toLowerCase()
+            let summary = bSummary.toLowerCase()
+            let pubDate = bPubDate.toLowerCase()
            
-        let book = await bookModel.findOne({bName}) 
-        
-        if(!book) {
-            let newBook = new bookModel({
-                bookName: bName,
-                bookAuthor: bAuthor,
-                bookISBN: bIsbn,
-                bookSummary: bSummary,
-                bookPubDate: bPubDate
-            })
-            res.status(200).json(`New Book Added To The Library :${lBNAme}`)
-
-            await newBook.save()
-        }
+        let book = await bookModel.findOne({bookName: name}) 
 
         if(book) {
             res.status(400).json('this book is already in the database')
         }  
+   
+        else if(!book) {
+            let newBook = new bookModel({
+                bookName: name,
+                bookAuthor: author,
+                bookISBN: isbn,
+                bookSummary: summary,
+                bookPubDate: pubDate
+            })
 
+            await newBook.save()
+            res.status(200).json(`New Book Added To The Library :${bName}`)
+            
+        }
 
     }
 )
@@ -76,13 +88,13 @@ exports.bookCreatePost = asyncHandler(
 
 exports.bookPost = asyncHandler(
     (req,res,next) =>{
-    
+        
     }
 )
 
 
 exports.booksPost = asyncHandler(
-    (req,res,next) =>{
+   async (req,res,next) =>{
 
     }
 )

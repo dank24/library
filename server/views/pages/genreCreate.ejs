@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/stylesheets/createPages.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add A Book</title>
+    <style> fieldset>div {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        gap: 0;
+    }
+    </style>
 </head>
 <body>
     <div class="mainCont">
@@ -14,10 +22,16 @@
         <div class="secondDiv">
             <form action="" method="post">
                 <fieldset>
-                    <input type="text" id="gName" placeholder="Name" name="gName">
-                    <input type="text" id="gDescrition" placeholder="Description" name="gDescrition">
-                </fieldset>
+                    <div>
+                        <label for="gName">Genre Name</label>
+                        <input type="text" id="gName" placeholder="Name" name="gName">
+                    </div>
+                    <div>
+                        <label for="gDescrition">Genre Description</label>
+                        <input type="text" id="gDescrition" placeholder="Description" name="gDescrition">
+                    </div>
                     <button type="submit">Create Book</button>
+                </fieldset>
             </form>
         </div>
     </div>    
