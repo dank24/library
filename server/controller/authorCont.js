@@ -62,7 +62,7 @@ exports.createAuthorPost = asyncHandler(
             })
 
             await newAuthor.save()
-            res.status(200).json(`New author: ${author} added`)
+            res.status(200).json(`New author: ${aFName}, ${aLName} added`)
         }
     }
 )
